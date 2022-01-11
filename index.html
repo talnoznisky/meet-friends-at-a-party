@@ -8,25 +8,21 @@
         margin: 0;
         padding: 0;
         font-family: Menlo, monospace;
-        font-size:1.3vw
+        font-size:1.3vw;
     }
     #container {
         margin: 5px;
     }
     button{
-        color:blanchedalmond;
         background-color: rgb(18, 87, 64);
-        border-color: azure;
+        border-color: blanchedalmond;;
         border-radius: 100%;
         padding: 5px;
         margin-top: 5px;
     }
-    font {
-        font-family: Menlo;
-    }
     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
         * {
-            font-size:1.92vw;
+            font-size: 1.92vw;
         }
         button {
             padding: 15px;
@@ -76,7 +72,7 @@ function draw(){
                 textBlock.innerHTML += '&nbsp;'
             }
             else if  ((31/7 < i && i < 31 - 31/7) && (80/9 < j && j < 80 - 80/9 )){
-                textBlock.innerHTML += `<font color=#${randomColor()}>${char}</font>`
+                textBlock.innerHTML += `<font class='rando' color=#${randomColor()}>${char}</font>`
             }
             else {
                 textBlock.innerHTML += `<font color=#${color}>0</font>`
