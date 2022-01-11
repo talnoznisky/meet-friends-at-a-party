@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />    
+<style>
+    * {
+        background-color: rgb(21 24 25);
+        margin: 0;
+        padding: 0;
+        font-family: Menlo, monospace;
+        font-size:1.3vw
+    }
+    #container {
+        margin: 5px;
+    }
+    button{
+        color:blanchedalmond;
+        background-color: rgb(18, 87, 64);
+        border-color: azure;
+        border-radius: 100%;
+        padding: 5px;
+        margin-top: 5px;
+    }
+    font {
+        font-family: Menlo;
+    }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        * {
+            font-size:1.92vw;
+        }
+    }
+</style>    
+</head>
+<body>
+    <div id='container'>
+        <div id='image'></div>
+        <button onclick="reload()" class="dropbtn">💫</button>
+    </div>
+    
+
+<script>
+function randomColor(){
+    return Math.floor(Math.random()*16777215).toString(16);    
+};
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+};
+function reload(){
+    let container = document.getElementById('image');
+    while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+    draw()
+}
+
+function draw(){
+    const image_container = document.getElementById('image');
+    const charset = '0!\\/uo*.~^'
+    let s = ''
+    let i = 0
+    let j = 0
+
+    let color = randomColor()
+    while (i <= 31){
+        let textBlock = document.createElement('div');
+        while (j <= 80){
+            let char = charset[getRandomInt(charset.length)]
+            if (j == 20 || j == 40 || j == 60){
+                textBlock.innerHTML += '&nbsp;&nbsp;'
+            }
+            else if (i == 10 || i == 21){
+                textBlock.innerHTML += '&nbsp;'
+            }
+            else if  ((31/7 < i && i < 31 - 31/7) && (80/9 < j && j < 80 - 80/9 )){
+                textBlock.innerHTML += `<font color=#${randomColor()}>${char}</font>`
+            }
+            else {
+                textBlock.innerHTML += `<font color=#${color}>0</font>`
+            }
+            j++ 
+        }
+        image_container.appendChild(textBlock)
+        i++
+        j = 0
+    }
+};
+
+draw();
+</script>
+
+</body>
+</html>
